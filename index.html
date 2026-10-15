@@ -1,0 +1,360 @@
+<title>Rede Segura</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: faixa de emergência fixa no topo + coluna única de leitura (máx. 68ch), seções com âncoras; tudo cabe em 360px */
+:root{
+  --bg:#f6f7f5; --surface:#ffffff; --ink:#1d2730; --muted:#55606a; --line:#d9dfdc;
+  --accent:#1f6f66; --accent-soft:#e2efec; --alert:#b3261e; --alert-ink:#ffffff; --alert-soft:#fbe9e7;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12181c; --surface:#1a2328; --ink:#e7ecea; --muted:#a3aeb0; --line:#2d3a40;
+  --accent:#6cc4b8; --accent-soft:#1d3532; --alert:#e5544b; --alert-ink:#ffffff; --alert-soft:#3a1d1b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12181c; --surface:#1a2328; --ink:#e7ecea; --muted:#a3aeb0; --line:#2d3a40;
+  --accent:#6cc4b8; --accent-soft:#1d3532; --alert:#e5544b; --alert-ink:#ffffff; --alert-soft:#3a1d1b; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* faixa fixa */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--alert);color:var(--alert-ink)}
+.bar-in{max-width:72rem;margin:0 auto;padding-block:8px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.bar-nums{display:flex;flex-wrap:wrap;gap:6px 14px;font-weight:700;font-size:.95rem}
+.bar-nums a{color:inherit;text-decoration:none;white-space:nowrap}
+.bar-nums a:hover{text-decoration:underline}
+.exit{font:700 1rem var(--body);background:var(--alert-ink);color:var(--alert);border:0;border-radius:999px;padding:10px 18px;cursor:pointer;white-space:nowrap}
+.exit small{font-weight:400;opacity:.8}
+
+nav.menu{border-bottom:1px solid var(--line);background:var(--surface)}
+nav.menu ul{max-width:72rem;margin:0 auto;list-style:none;padding-block:10px;display:flex;gap:6px 18px;overflow-x:auto;padding-left:0;padding-right:0}
+nav.menu a{color:var(--ink);text-decoration:none;white-space:nowrap;font-size:.95rem}
+nav.menu a:hover{color:var(--accent)}
+
+main{max-width:68ch;margin:0 auto;padding-block:32px 64px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:800}
+h2{font-size:1.65rem;font-weight:800}
+h3{font-size:1.1rem;font-weight:600}
+section{display:grid;gap:16px;scroll-margin-top:110px}
+p{margin:0}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lead{font-size:1.2rem;color:var(--muted)}
+
+.hero{display:grid;gap:14px}
+.hero-grid{display:grid;gap:24px;align-items:center}
+.hero-grid > div{display:grid;gap:14px;min-width:0}
+@media (min-width:760px){.hero-grid{grid-template-columns:1.4fr 1fr}}
+figure{margin:0;display:grid;gap:6px}
+figure img{display:block;width:100%;max-width:100%;border-radius:12px;background:var(--line)}
+.photo img{aspect-ratio:4/5;object-fit:cover;object-position:center 60%;max-height:440px}
+figcaption{font-size:.8rem;color:var(--muted)}
+figcaption a{color:var(--muted)}
+.drawing img{border:1px solid var(--line)}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--accent)}
+.btn.solid{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent)}
+
+.law{font-size:.85rem;color:var(--muted)}
+.forms{display:grid;gap:12px}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:6px}
+.form p{color:var(--muted)}
+.form .ex{color:var(--ink)}
+
+.channels{display:grid;gap:10px}
+.ch{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
+.ch:last-child{border-bottom:1px solid var(--line)}
+.ch .num{font-family:var(--display);font-weight:800;font-size:1.35rem;min-width:5.5ch;color:var(--accent);font-variant-numeric:tabular-nums}
+.ch .num.red{color:var(--alert)}
+.ch div{min-width:0}
+.copy{font:inherit;font-size:.8rem;margin-left:6px;background:var(--accent-soft);color:var(--ink);border:0;border-radius:6px;padding:2px 8px;cursor:pointer}
+
+.callout{background:var(--alert-soft);border-left:4px solid var(--alert);padding:14px 16px;border-radius:0 10px 10px 0}
+
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:14px}
+.quiz fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+.quiz label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.quiz input{width:1.2rem;height:1.2rem;margin-top:.2rem;accent-color:var(--accent);flex:none}
+.result{padding:14px;border-radius:10px;background:var(--accent-soft)}
+.note{font-size:.85rem;color:var(--muted)}
+
+.places{display:grid;gap:12px}
+.place{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:4px}
+.place .meta{color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:6px}
+.tag.todo{background:var(--alert-soft);color:var(--alert)}
+
+ol.steps,ul.plain{margin:0;padding-left:1.3rem;display:grid;gap:8px}
+details{border-top:1px solid var(--line);padding:12px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}
+details p{margin-top:8px;color:var(--muted)}
+.verdade{color:var(--accent);font-weight:700}
+
+footer{border-top:1px solid var(--line);background:var(--surface)}
+footer .in{max-width:68ch;margin:0 auto;padding-block:24px;font-size:.9rem;color:var(--muted);display:grid;gap:8px}
+
+/* tela neutra da saída rápida */
+#neutral{position:fixed;inset:0;z-index:100;background:#fff;color:#222;font-family:Georgia,serif;overflow:auto;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+#neutral .box{max-width:40rem;margin:0 auto;display:grid;gap:12px}
+#neutral h1{font-family:Georgia,serif;font-weight:400;font-size:1.8rem}
+</style>
+
+<div class="bar gutter" role="region" aria-label="Ajuda imediata">
+  <div class="bar-in">
+    <div class="bar-nums">
+      <a href="tel:190">Emergência: 190</a>
+      <a href="tel:180">Ligue 180</a>
+      <a href="#denunciar">WhatsApp 180: (61) 9610-0180</a>
+    </div>
+    <button class="exit" id="exit" type="button" aria-label="Sair rápido deste site">Sair rápido <small>(Esc 2×)</small></button>
+  </div>
+</div>
+
+<nav class="menu gutter" aria-label="Seções">
+  <ul>
+    <li><a href="#formas">Formas de violência</a></li>
+    <li><a href="#teste">Isso é violência?</a></li>
+    <li><a href="#direitos">Seus direitos</a></li>
+    <li><a href="#denunciar">Como denunciar</a></li>
+    <li><a href="#rede">Rede de apoio</a></li>
+    <li><a href="#ajudar">Como ajudar</a></li>
+    <li><a href="#mitos">Mitos</a></li>
+    <li><a href="#seguranca">Navegar com segurança</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+  </ul>
+</nav>
+
+<main class="gutter">
+  <section class="hero" aria-labelledby="t">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Informação e apoio · São Paulo</p>
+        <h1 id="t">Violência doméstica tem nome, tem lei e tem saída.</h1>
+        <p class="lead">Aqui você encontra o que diz a Lei Maria da Penha, como pedir ajuda com segurança e onde ser atendida perto de você. Tudo é gratuito, e este site não guarda nenhuma informação sua.</p>
+        <div class="cta">
+          <a class="btn solid" href="#denunciar">Quero pedir ajuda</a>
+          <a class="btn ghost" href="#ajudar">Quero ajudar alguém</a>
+        </div>
+      </div>
+      <figure class="photo">
+        <img src="img/maos-amarradas.jpg" width="800" height="1200" alt="Mulher de cabeça baixa com as mãos amarradas por uma corda, simbolizando a violência que prende a vítima.">
+        <figcaption>Foto: <a href="https://pixabay.com/pt/users/engin_akyurt-3656355/" target="_blank" rel="noopener noreferrer">Engin_Akyurt</a> / Pixabay</figcaption>
+      </figure>
+    </div>
+    <div class="callout"><strong>Está em perigo agora?</strong> Ligue <strong>190</strong>. Se não puder falar, a central também atende pelo WhatsApp do Ligue 180.</div>
+  </section>
+
+  <section id="formas" aria-labelledby="h-formas">
+    <p class="eyebrow">Lei 11.340/2006, art. 7º</p>
+    <h2 id="h-formas">As cinco formas de violência doméstica</h2>
+    <p>A violência não é só o tapa. A lei reconhece cinco formas, e elas podem acontecer juntas. Vale quando quem agride mora com a vítima, é da família ou tem ou teve com ela uma relação de afeto, mesmo sem morar junto.</p>
+    <div class="forms" id="forms"></div>
+  </section>
+
+  <section id="teste" aria-labelledby="h-teste">
+    <p class="eyebrow">Autoavaliação</p>
+    <h2 id="h-teste">Isso é violência?</h2>
+    <p>Marque o que já aconteceu com você ou com alguém próximo. As respostas ficam só na sua tela e somem quando a página é fechada.</p>
+    <form class="quiz" id="quiz">
+      <fieldset id="qs"><legend class="note">Marque todas que se aplicam</legend></fieldset>
+      <div class="cta"><button class="btn solid" type="submit">Ver resultado</button><button class="btn ghost" type="reset" id="clear">Limpar</button></div>
+      <div class="result" id="result" hidden aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section id="direitos" aria-labelledby="h-direitos">
+    <p class="eyebrow">Seus direitos</p>
+    <h2 id="h-direitos">Medidas protetivas de urgência</h2>
+    <p>São ordens do juiz para proteger a vítima. Podem ser pedidas na delegacia, pela Delegacia Eletrônica, na Defensoria ou no Ministério Público, sem precisar de advogado. O juiz decide em até 48 horas.</p>
+    <ul class="plain">
+      <li>Afastar o agressor de casa.</li>
+      <li>Proibir que ele se aproxime ou entre em contato com você, com sua família e com testemunhas.</li>
+      <li>Suspender o porte de armas.</li>
+      <li>Garantir pensão provisória para os filhos.</li>
+      <li>Encaminhar você e seus filhos para programas de proteção e atendimento.</li>
+    </ul>
+    <p>Descumprir uma medida protetiva é crime, com pena de 2 a 5 anos de prisão (Lei 14.994/2024). O feminicídio passou a ser crime autônomo e hediondo, com pena de 20 a 40 anos.</p>
+  </section>
+
+  <section id="denunciar" aria-labelledby="h-den">
+    <p class="eyebrow">Canais gratuitos</p>
+    <h2 id="h-den">Como denunciar</h2>
+    <p>Você pode denunciar mesmo sem provas, e testemunhas também podem denunciar. Escolha o canal mais seguro para o seu momento.</p>
+    <div class="channels" id="channels"></div>
+    <p class="note">Estupro não pode ser registrado pela internet. Procure uma delegacia ou a Casa da Mulher Brasileira o quanto antes. Não tome banho nem troque de roupa, se puder, para preservar provas.</p>
+  </section>
+
+  <section id="rede" aria-labelledby="h-rede">
+    <p class="eyebrow">Atendimento presencial</p>
+    <h2 id="h-rede">Rede de apoio</h2>
+    <p>Esses serviços acolhem, orientam e encaminham. Você não precisa ter registrado boletim de ocorrência para ser atendida.</p>
+    <div class="places" id="places"></div>
+  </section>
+
+  <section id="ajudar" aria-labelledby="h-aj">
+    <p class="eyebrow">Para vizinhos, família e colegas</p>
+    <h2 id="h-aj">Como ajudar alguém</h2>
+    <ol class="steps">
+      <li><strong>Ouça sem julgar.</strong> Evite perguntar "por que você não sai?". Diga que acredita nela e que a culpa não é dela.</li>
+      <li><strong>Não confronte o agressor.</strong> Isso pode aumentar o risco para ela e para você.</li>
+      <li><strong>Mostre os canais</strong> e ofereça o seu telefone para ela ligar em segurança.</li>
+      <li><strong>Combine um sinal</strong> (uma palavra ou mensagem) que signifique "chame a polícia".</li>
+      <li><strong>Viu ou ouviu agressão? Ligue 190.</strong> "Em briga de marido e mulher" se mete a colher, sim.</li>
+      <li><strong>Respeite o tempo dela.</strong> Sair de uma relação violenta costuma levar várias tentativas. Continue por perto.</li>
+    </ol>
+  </section>
+
+  <section id="mitos" aria-labelledby="h-mitos">
+    <p class="eyebrow">Mitos e verdades</p>
+    <h2 id="h-mitos">O que as pessoas costumam dizer</h2>
+    <div id="myths"></div>
+  </section>
+
+  <section id="seguranca" aria-labelledby="h-seg">
+    <p class="eyebrow">Proteja sua navegação</p>
+    <h2 id="h-seg">Como apagar o rastro deste site</h2>
+    <p>Se alguém controla seu celular ou computador, estas atitudes ajudam:</p>
+    <ul class="plain">
+      <li>Use uma <strong>aba anônima</strong> (Chrome: Ctrl+Shift+N; no celular, menu ⋮ → Nova guia anônima).</li>
+      <li>Se não usou aba anônima, apague só as entradas deste site no <strong>histórico</strong>. Apagar tudo pode chamar atenção.</li>
+      <li>Use o botão <strong>Sair rápido</strong> ou aperte <strong>Esc duas vezes</strong> para trocar a tela na hora.</li>
+      <li>Apague as conversas com canais de ajuda depois de usar, se achar necessário.</li>
+    </ul>
+  </section>
+
+  <section id="sobre" aria-labelledby="h-sobre">
+    <p class="eyebrow">Sobre o projeto</p>
+    <h2 id="h-sobre">Quem fez este site</h2>
+    <figure class="drawing">
+      <img src="img/desenho-ajude-nos.jpg" width="989" height="714" alt="Desenho a lápis de cor: uma mulher sentada protege a cabeça enquanto um menino chora agarrado a ela, diante de um punho fechado. Texto: Não mais violência em casa. Por favor, ajude-nos. Telefones 180 e 190.">
+    </figure>
+    <p>Este site é um projeto de extensão da UNIASSELVI ("Desenvolvimento de sites ou aplicativos sobre violência doméstica", ODS 16), desenvolvido pelo aluno de Segunda Licenciatura Álvaro Machado Júnior em parceria com <strong>[INSTITUIÇÃO PARCEIRA]</strong>, que revisou e mantém o conteúdo.</p>
+    <p class="note">As informações não substituem atendimento jurídico ou psicológico. Telefones e endereços conferidos em outubro de 2026.</p>
+  </section>
+</main>
+
+<footer class="gutter"><div class="in">
+  <p>Este site não usa cookies, não tem formulários de contato e não registra visitas.</p>
+  <p>Fontes: Lei 11.340/2006 (Maria da Penha), Lei 14.994/2024, Ministério das Mulheres, Prefeitura de São Paulo, Polícia Civil de SP, TJSP.</p>
+</div></footer>
+
+<div id="neutral" hidden>
+  <div class="box">
+    <h1>Bolo de fubá simples</h1>
+    <p>Rende 12 fatias · 50 minutos</p>
+    <p><b>Ingredientes:</b> 3 ovos, 1 xícara de leite, ½ xícara de óleo, 2 xícaras de açúcar, 2 xícaras de fubá, 1 xícara de farinha de trigo, 1 colher (sopa) de fermento.</p>
+    <p><b>Modo de preparo:</b> bata no liquidificador os ovos, o leite, o óleo e o açúcar. Junte o fubá e a farinha e bata mais um pouco. Misture o fermento com uma colher. Asse em forno médio, 180 °C, por cerca de 40 minutos.</p>
+  </div>
+</div>
+
+<script>
+/* RNF08: todos os contatos e textos editáveis ficam aqui */
+const DATA = {
+  forms: [
+    ["Física","Qualquer ação que machuque o corpo.","Empurrões, tapas, socos, chutes, beliscões, queimaduras, tentar sufocar."],
+    ["Psicológica","Atitudes que causam dano emocional, humilham, controlam ou isolam.","Ameaçar, xingar, vigiar o celular, proibir de ver amigos ou família, perseguir, fazer a vítima duvidar da própria memória."],
+    ["Sexual","Obrigar a presenciar, manter ou participar de relação sexual sem querer.","Forçar relações, impedir o uso de métodos contraceptivos, forçar aborto ou gravidez."],
+    ["Patrimonial","Reter, destruir ou tirar bens, documentos e dinheiro.","Quebrar o celular, esconder documentos, controlar todo o salário, vender bens sem permissão."],
+    ["Moral","Caluniar, difamar ou injuriar.","Espalhar mentiras sobre a vítima, expor sua intimidade, ofender sua honra em público ou nas redes."]
+  ],
+  quiz: [
+    "Controla meu celular, minhas senhas ou minhas redes sociais",
+    "Me impede de ver amigos ou a minha família",
+    "Me xinga, humilha ou me faz sentir que estou ficando louca",
+    "Controla o meu dinheiro ou toma o meu salário",
+    "Já quebrou objetos, documentos ou o meu celular",
+    "Já me empurrou, segurou com força, bateu ou machucou",
+    "Ameaça me machucar, levar meus filhos ou se matar se eu for embora",
+    "Me pressiona ou obriga a ter relações sexuais"
+  ],
+  channels: [
+    {num:"190", red:true, name:"Polícia Militar", txt:"Perigo imediato ou agressão acontecendo agora. 24 horas.", copy:"190"},
+    {num:"180", name:"Ligue 180 · Central de Atendimento à Mulher", txt:"Orienta, recebe denúncias e encaminha. Gratuito, anônimo e 24 horas. Também atende pelo WhatsApp (61) 9610-0180.", copy:"(61) 9610-0180"},
+    {num:"100", name:"Disque 100 · Direitos Humanos", txt:"Violência contra crianças, adolescentes, pessoas idosas e pessoas com deficiência. Gratuito, 24 horas.", copy:"100"},
+    {num:"Online", name:"Delegacia Eletrônica da Polícia Civil de SP", txt:"Boletim de ocorrência pela internet, com pedido de medida protetiva no histórico. Endereço: delegaciaeletronica.policiacivil.sp.gov.br", link:"https://www.delegaciaeletronica.policiacivil.sp.gov.br/ssp-de-cidadao/home"},
+    {num:"App", name:"SP Mulher Segura", txt:"Aplicativo do Governo de SP para registrar ocorrências e pedir medidas protetivas pelo celular."},
+    {num:"DDM", name:"Delegacia de Defesa da Mulher", txt:"Registro presencial. O estado tem 142 unidades, 18 delas abertas 24 horas."}
+  ],
+  places: [
+    {name:"Casa da Mulher Brasileira", addr:"Rua Vieira Ravasco, 26 · Cambuci, São Paulo", tel:"(11) 3275-8000", hours:"24 horas, todos os dias", info:"Acolhimento psicossocial, Delegacia da Mulher, anexo do Tribunal de Justiça para medidas protetivas e atendimento em Libras."},
+    {name:"[INSTITUIÇÃO PARCEIRA]", addr:"[ENDEREÇO]", tel:"[TELEFONE]", hours:"[HORÁRIO]", info:"[O QUE A INSTITUIÇÃO OFERECE]", todo:true},
+    {name:"CRAS / CREAS da região", addr:"[ENDEREÇO]", tel:"[TELEFONE]", hours:"[HORÁRIO]", info:"Assistência social e acompanhamento de famílias em situação de violência.", todo:true},
+    {name:"Casa da Mulher (CRCM/CDCM) da região", addr:"[ENDEREÇO]", tel:"[TELEFONE]", hours:"[HORÁRIO]", info:"Atendimento psicológico, social e jurídico gratuito.", todo:true},
+    {name:"Conselho Tutelar", addr:"[ENDEREÇO]", tel:"[TELEFONE]", hours:"[HORÁRIO]", info:"Quando há crianças ou adolescentes envolvidos.", todo:true}
+  ],
+  myths: [
+    ["Se fosse tão ruim, ela já teria ido embora.","Sair é o momento de maior risco. Medo, dependência financeira, filhos e ameaças prendem a vítima. A rede de apoio existe para planejar uma saída segura."],
+    ["Ciúme é prova de amor.","Ciúme que controla roupa, celular e amizades é violência psicológica, prevista na lei."],
+    ["Em briga de marido e mulher, ninguém mete a colher.","Violência doméstica é crime, e qualquer pessoa pode denunciar pelo 190 ou pelo 180."],
+    ["Sem marca no corpo, não é violência.","A lei reconhece cinco formas de violência. Humilhar, ameaçar e controlar dinheiro também são."],
+    ["A Lei Maria da Penha só vale para quem é casada.","Vale para namoro, ex-companheiros e familiares, mesmo sem morar juntos."]
+  ]
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+$("#forms").innerHTML = DATA.forms.map(([n,d,e]) =>
+  `<article class="form"><h3>${esc(n)}</h3><p>${esc(d)}</p><p class="ex"><strong>Exemplos:</strong> ${esc(e)}</p></article>`).join("");
+
+$("#qs").insertAdjacentHTML("beforeend", DATA.quiz.map((q,i) =>
+  `<label for="q${i}"><input type="checkbox" id="q${i}" name="q${i}"><span>${esc(q)}</span></label>`).join(""));
+
+$("#channels").innerHTML = DATA.channels.map(c => `
+  <div class="ch"><span class="num${c.red?" red":""}">${esc(c.num)}</span><div>
+    <h3>${esc(c.name)}</h3><p>${esc(c.txt)}${c.copy?` <button class="copy" type="button" data-copy="${esc(c.copy)}">Copiar ${esc(c.copy)}</button>`:""}${c.link?` <a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer">Abrir</a>`:""}</p>
+  </div></div>`).join("");
+
+$("#places").innerHTML = DATA.places.map(p => `
+  <article class="place"><h3>${p.todo?'<span class="tag todo">Preencher com a parceira</span>':'<span class="tag">24 h</span>'}${esc(p.name)}</h3>
+    <p class="meta">${esc(p.addr)} · ${esc(p.tel)} · ${esc(p.hours)}</p><p>${esc(p.info)}</p></article>`).join("");
+
+$("#myths").innerHTML = DATA.myths.map(([m,v]) =>
+  `<details><summary>"${esc(m)}"</summary><p><span class="verdade">Verdade:</span> ${esc(v)}</p></details>`).join("");
+
+/* teste: nada é salvo */
+$("#quiz").addEventListener("submit", e => {
+  e.preventDefault();
+  const n = [...document.querySelectorAll("#qs input:checked")].length;
+  const r = $("#result");
+  r.hidden = false;
+  r.innerHTML = n === 0
+    ? "Você não marcou nenhuma situação. Se algo ainda te incomoda na relação, conversar com o Ligue 180 pode ajudar a entender."
+    : `Você marcou <strong>${n}</strong> ${n>1?"situações":"situação"}. ${n>1?"Todas são formas":"Essa é uma forma"} de violência reconhecida${n>1?"s":""} pela Lei Maria da Penha. Você não está sozinha: <a href="#denunciar">veja como pedir ajuda</a> ou ligue 180, de graça e sem se identificar.`;
+});
+$("#clear").addEventListener("click", () => { $("#result").hidden = true; });
+
+/* copiar números */
+document.addEventListener("click", e => {
+  const b = e.target.closest(".copy"); if (!b) return;
+  const t = b.dataset.copy, old = b.textContent;
+  const done = msg => { b.textContent = msg; setTimeout(() => b.textContent = old, 1800); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => done("Copiado"), () => done(t));
+  else done(t);
+});
+
+/* saída rápida (RF01/RF02): troca a tela imediatamente; no site publicado também substitui o endereço no histórico */
+function quickExit(){
+  $("#neutral").hidden = false;
+  document.title = "Bolo de fubá simples";
+  try { window.top.location.replace("https://www.google.com/search?q=receita+bolo+de+fuba"); } catch(_) {}
+}
+$("#exit").addEventListener("click", quickExit);
+let lastEsc = 0;
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  const now = Date.now();
+  if (now - lastEsc < 800) quickExit();
+  lastEsc = now;
+});
+</script>

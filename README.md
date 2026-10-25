@@ -1,6 +1,6 @@
 # Rede Segura
 
-Site informativo sobre violência doméstica, desenvolvido como projeto de extensão da UNIASSELVI ("Desenvolvimento de sites ou aplicativos sobre violência doméstica", ODS 16) pelo aluno de Segunda Licenciatura Álvaro Machado Júnior.
+Site informativo sobre violência doméstica, desenvolvido como projeto de extensão da UNIASSELVI ("Desenvolvimento de sites ou aplicativos sobre violência doméstica", ODS 16) pelo aluno de Segunda Licenciatura Álvaro Machado Júnior, com o apoio da OSC AFAGO (instituição parceira).
 
 **Site:** https://redesegura.alvaromjunior.com
 

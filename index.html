@@ -92,6 +92,7 @@ figcaption a{color:var(--muted)}
 .copy{font:inherit;font-size:.8rem;margin-left:6px;background:var(--accent-soft);color:var(--ink);border:0;border-radius:6px;padding:2px 8px;cursor:pointer}
 
 .callout{background:var(--alert-soft);border-left:4px solid var(--alert);padding:14px 16px;border-radius:0 10px 10px 0}
+.callout.kids{background:var(--accent-soft);border-left-color:var(--accent);display:grid;gap:8px;margin:8px 0}
 
 .quiz{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:14px}
 .quiz fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
@@ -155,11 +156,11 @@ body{overflow-wrap:anywhere}
 
 <nav class="menu gutter" aria-label="Seções">
   <ul>
+    <li><a href="#denunciar">Como denunciar</a></li>
+    <li><a href="#rede">Rede de apoio</a></li>
     <li><a href="#formas">Formas de violência</a></li>
     <li><a href="#teste">Isso é violência?</a></li>
     <li><a href="#direitos">Seus direitos</a></li>
-    <li><a href="#denunciar">Como denunciar</a></li>
-    <li><a href="#rede">Rede de apoio</a></li>
     <li><a href="#ajudar">Como ajudar</a></li>
     <li><a href="#criancas">Crianças</a></li>
     <li><a href="#mitos">Mitos</a></li>
@@ -176,7 +177,9 @@ body{overflow-wrap:anywhere}
         <h1 id="t">Violência doméstica tem nome, tem lei e tem saída.</h1>
         <p class="lead">Aqui você encontra o que diz a Lei Maria da Penha, como pedir ajuda com segurança e onde ser atendida perto de você. Tudo é gratuito, e este site não guarda nenhuma informação sua.</p>
         <div class="cta">
-          <a class="btn solid" href="#denunciar">Quero pedir ajuda</a>
+          <a class="btn solid" href="#perigo">Estou em perigo agora</a>
+          <a class="btn solid" href="#denunciar">Como denunciar</a>
+          <a class="btn ghost" href="#rede">Onde ser atendida</a>
           <a class="btn ghost" href="#ajudar">Quero ajudar alguém</a>
         </div>
       </div>
@@ -185,7 +188,7 @@ body{overflow-wrap:anywhere}
         <figcaption>Foto: <a href="https://pixabay.com/pt/users/engin_akyurt-3656355/" target="_blank" rel="noopener noreferrer">Engin_Akyurt</a> / Pixabay</figcaption>
       </figure>
     </div>
-    <div class="callout"><strong>Está em perigo agora?</strong> Ligue <strong>190</strong>. Se não puder falar, a central também atende pelo WhatsApp do Ligue 180.</div>
+    <div class="callout" id="perigo" tabindex="-1"><strong>Está em perigo agora?</strong> Ligue <strong>190</strong>. Se não puder falar, a central também atende pelo WhatsApp do Ligue 180.</div>
   </section>
 
   <section id="formas" aria-labelledby="h-formas">
@@ -260,7 +263,17 @@ body{overflow-wrap:anywhere}
       <li>Faltas, queda nas notas, isolamento dos amigos.</li>
       <li>Conhecimento ou comportamento sexual que não combina com a idade.</li>
     </ul>
-    <h3>O que fazer</h3>
+    <div class="callout kids">
+      <strong>Para você, criança ou adolescente</strong>
+      <p>Se alguém em casa te machuca, te ameaça ou te deixa com medo, <b>a culpa não é sua</b>. Você tem direito de ser protegido.</p>
+      <ul class="plain">
+        <li><b>Conte para um adulto de confiança:</b> professor ou professora, coordenação da escola, educador da AFAGO, avó, tia ou vizinha.</li>
+        <li>Pode ser simples: <i>“Preciso falar com você sobre uma coisa que está acontecendo em casa.”</i></li>
+        <li>Se a primeira pessoa não ajudar, <b>conte para outra</b>. Não desista.</li>
+        <li>O adulto que ouvir deve procurar o Conselho Tutelar. Você não precisa resolver isso sozinho.</li>
+      </ul>
+    </div>
+    <h3>O que fazer (para adultos)</h3>
     <ol class="steps">
       <li><strong>Escute com calma</strong> e diga que ela fez certo em contar. Não pressione por detalhes.</li>
       <li><strong>Não confronte a família</strong> nem prometa guardar segredo.</li>
@@ -295,6 +308,7 @@ body{overflow-wrap:anywhere}
       <img src="img/desenho-ajude-nos.jpg" width="989" height="714" alt="Desenho a lápis de cor: uma mulher sentada protege a cabeça enquanto um menino chora agarrado a ela, diante de um punho fechado. Texto: Não mais violência em casa. Por favor, ajude-nos. Telefones 180 e 190.">
     </figure>
     <p>Este site é um projeto de extensão da UNIASSELVI ("Desenvolvimento de sites ou aplicativos sobre violência doméstica", ODS 16), desenvolvido pelo aluno de Segunda Licenciatura Álvaro Machado Júnior com o apoio da <strong>OSC AFAGO</strong>, instituição parceira do projeto.</p>
+    <p><b>Papel da AFAGO.</b> A AFAGO SP atua na proteção social básica, com atividades de convivência e fortalecimento de vínculos para cerca de 280 crianças e adolescentes de 6 a 18 anos do Jardim Pedreira e região. Ela não faz atendimento especializado a vítimas de violência: para isso, procure os serviços da <a href="#rede">Rede de apoio</a>.</p>
     <h3>Contato e redes</h3>
     <ul class="plain">
       <li>Instituição parceira: <a href="https://www.afagosp.org.br/" target="_blank" rel="noopener noreferrer">AFAGO SP</a> · <a href="https://www.facebook.com/afagosp" target="_blank" rel="noopener noreferrer">Facebook</a></li>
@@ -454,6 +468,7 @@ const FAQ = [
  {q:"Posso retirar a denúncia?", k:"retirar desistir retirar queixa voltar atras perdoar arrepender", a:'Em casos de agressão física, não: o processo continua mesmo se a vítima desistir (decisão do STF). Em alguns crimes, como ameaça, a desistência só pode ser feita diante do juiz, em audiência. Mesmo assim, você pode procurar orientação a qualquer momento no CDCM ou na Casa da Mulher.'},
  {q:"Quero ajudar uma amiga ou vizinha", k:"ajudar amiga vizinha vizinho irma mae colega conhecida alguem", a:'Ouça sem julgar, não confronte o agressor e ofereça ir junto com ela a um atendimento presencial. Viu ou ouviu agressão acontecendo? Chame a polícia pelo 190. <a href="#ajudar">Ver como ajudar</a>.'},
  {q:"Uma criança está sofrendo violência", k:"crianca adolescente menor filho filha apanha bate maltrata abuso infantil escola", a:'Procure o <b>Conselho Tutelar de Pedreira</b> (Rua Antônio Teixeira Pinto, 9, Balneário Mar Paulista). Em perigo imediato, chame a polícia pelo 190. <a href="#criancas">Ver sinais de alerta</a>.'},
+ {q:"Sou criança ou adolescente e tenho medo", k:"sou crianca adolescente menina menino medo casa apanho pai mae padrasto madrasta escola professor contar", a:'A culpa <b>não é sua</b>. Conte para um adulto de confiança: professor, coordenação da escola, educador da AFAGO, avó, tia ou vizinha. Pode dizer: <i>“Preciso falar com você sobre uma coisa que está acontecendo em casa.”</i> Se a primeira pessoa não ajudar, conte para outra. <a href="#criancas">Saiba mais</a>.'},
  {q:"Existe abrigo para mim?", k:"abrigo casa abrigo dormir onde ficar acolhimento fugir", a:'Sim. Há casas-abrigo sigilosas para mulheres em risco, com acesso por encaminhamento. Procure pessoalmente a Casa da Mulher Brasileira, o CREAS ou o CDCM, que fazem esse encaminhamento.'},
  {q:"Este site guarda meus dados?", k:"dados privacidade guarda salva rastro historico seguro", a:'Não. O site não usa cookies, não tem formulário e não registra visitas. Este assistente não entra em contato com ninguém: a conversa não é enviada nem salva e some ao fechar. Use o botão <b>Sair rápido</b> (ou Esc 2×) se precisar.'}
 ];

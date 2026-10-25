@@ -30,4 +30,5 @@ Itens marcados `todo: true` aparecem com a etiqueta "Preencher com a parceira". 
 ## Créditos
 
 - Foto da página inicial: [Engin_Akyurt](https://pixabay.com/pt/users/engin_akyurt-3656355/) / Pixabay
+- Foto do sinal de ajuda com a mão: Álvaro Machado Júnior
 - Fontes das informações: Lei 11.340/2006, Lei 14.994/2024, Ministério das Mulheres, Prefeitura de São Paulo, Polícia Civil de SP, TJSP

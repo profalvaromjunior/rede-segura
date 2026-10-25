@@ -48,6 +48,8 @@ a{color:var(--accent)}
 nav.menu{border-bottom:1px solid var(--line);background:var(--surface)}
 nav.menu ul{max-width:72rem;margin:0 auto;list-style:none;padding-block:10px;display:flex;gap:6px 18px;overflow-x:auto;padding-left:0;padding-right:0}
 nav.menu a{color:var(--ink);text-decoration:none;white-space:nowrap;font-size:.95rem}
+nav.menu ul{scrollbar-width:none} nav.menu ul::-webkit-scrollbar{display:none}
+@media (min-width:760px){nav.menu ul{flex-wrap:wrap;overflow-x:visible}}
 nav.menu a:hover{color:var(--accent)}
 
 main{max-width:68ch;margin:0 auto;padding-block:32px 64px;display:grid;gap:56px}
@@ -159,9 +161,9 @@ body{overflow-wrap:anywhere}
     <li><a href="#denunciar">Como denunciar</a></li>
     <li><a href="#rede">Rede de apoio</a></li>
     <li><a href="#ajudar">Como ajudar</a></li>
-    <li><a href="#criancas">Crianças e adolescentes</a></li>
+    <li><a href="#criancas">Crianças</a></li>
     <li><a href="#mitos">Mitos</a></li>
-    <li><a href="#seguranca">Navegar com segurança</a></li>
+    <li><a href="#seguranca">Segurança</a></li>
     <li><a href="#sobre">Sobre</a></li>
   </ul>
 </nav>

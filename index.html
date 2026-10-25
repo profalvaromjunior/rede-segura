@@ -92,6 +92,10 @@ figcaption a{color:var(--muted)}
 .copy{font:inherit;font-size:.8rem;margin-left:6px;background:var(--accent-soft);color:var(--ink);border:0;border-radius:6px;padding:2px 8px;cursor:pointer}
 
 .callout{background:var(--alert-soft);border-left:4px solid var(--alert);padding:14px 16px;border-radius:0 10px 10px 0}
+.signs{display:grid;gap:14px}
+.sign{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;align-items:start}
+@media (min-width:640px){.sign{grid-template-columns:auto 1fr}}
+.sign svg{color:var(--ink);max-width:100%;height:auto}
 .callout.kids{background:var(--accent-soft);border-left-color:var(--accent);display:grid;gap:8px;margin:8px 0}
 
 .quiz{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:14px}
@@ -158,6 +162,7 @@ body{overflow-wrap:anywhere}
   <ul>
     <li><a href="#denunciar">Como denunciar</a></li>
     <li><a href="#rede">Rede de apoio</a></li>
+    <li><a href="#sinal">Sinal da mão</a></li>
     <li><a href="#formas">Formas de violência</a></li>
     <li><a href="#teste">Isso é violência?</a></li>
     <li><a href="#direitos">Seus direitos</a></li>
@@ -231,6 +236,48 @@ body{overflow-wrap:anywhere}
     <p class="note">Estupro não pode ser registrado pela internet. Procure uma delegacia ou a Casa da Mulher Brasileira o quanto antes. Não tome banho nem troque de roupa, se puder, para preservar provas. Todo hospital do SUS deve atender a vítima de violência sexual de forma imediata e integral, com remédios para evitar gravidez e infecções, mesmo sem boletim de ocorrência (Lei 12.845/2013).</p>
   </section>
 
+  <section id="sinal" aria-labelledby="h-sinal">
+    <p class="eyebrow">Pedir ajuda sem falar</p>
+    <h2 id="h-sinal">O sinal da mão</h2>
+    <div class="signs">
+      <article class="sign">
+        <svg viewBox="0 0 120 140" width="110" height="128" role="img" aria-label="Palma da mão aberta com um X vermelho desenhado no centro">
+          <path d="M34 132c-8-10-14-26-16-40l-6-30c-1-6 7-9 10-3l9 22V22c0-7 10-7 10 0v40V14c0-7 10-7 10 0v48V18c0-7 10-7 10 0v46V28c0-7 10-7 10 0v58c0 20-8 36-16 46z" fill="#f2d3b8" stroke="#8a5a3c" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M35 80l22 24M57 80L35 104" stroke="#c62828" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h3>Sinal Vermelho</h3>
+          <p>Desenhe um <b>X vermelho na palma da mão</b> (com batom, caneta ou o que tiver) e mostre ao atendente de farmácias, bancos, repartições públicas e outros locais que participam da campanha. A pessoa deve chamar a polícia e acolher você em local reservado, sem que o agressor perceba.</p>
+          <p class="note">Programa Sinal Vermelho contra a Violência Doméstica (Lei 14.188/2021). Essa lei também tornou crime a violência psicológica contra a mulher (Código Penal, art. 147-B).</p>
+        </div>
+      </article>
+      <article class="sign">
+        <svg viewBox="0 0 330 150" width="300" height="136" role="img" aria-label="Três passos: 1, mão aberta com a palma para frente; 2, polegar dobrado sobre a palma; 3, dedos fechados por cima do polegar">
+ <g fill="#f2d3b8" stroke="#8a5a3c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+  <!-- 1 open hand, palm facing, thumb out to left -->
+  <rect x="22" y="70" width="64" height="66" rx="16"/>
+  <rect x="24" y="22" width="13" height="58" rx="6.5"/><rect x="39" y="12" width="13" height="66" rx="6.5"/><rect x="54" y="16" width="13" height="62" rx="6.5"/><rect x="69" y="28" width="13" height="52" rx="6.5"/>
+  <rect x="2" y="76" width="34" height="13" rx="6.5" transform="rotate(-35 19 82)"/>
+  <!-- 2 thumb folded across palm -->
+  <rect x="132" y="70" width="64" height="66" rx="16"/>
+  <rect x="134" y="22" width="13" height="58" rx="6.5"/><rect x="149" y="12" width="13" height="66" rx="6.5"/><rect x="164" y="16" width="13" height="62" rx="6.5"/><rect x="179" y="28" width="13" height="52" rx="6.5"/>
+  <rect x="136" y="92" width="46" height="14" rx="7"/>
+  <!-- 3 fingers folded over thumb (fist from front) -->
+  <rect x="242" y="70" width="64" height="66" rx="16"/>
+  <rect x="244" y="58" width="60" height="16" rx="8"/><rect x="244" y="72" width="60" height="16" rx="8"/><rect x="244" y="86" width="60" height="16" rx="8"/><rect x="246" y="100" width="56" height="14" rx="7"/>
+ </g>
+ <g font-family="sans-serif" font-size="16" font-weight="700" fill="currentColor" text-anchor="middle"><text x="54" y="148">1</text><text x="164" y="148">2</text><text x="274" y="148">3</text></g>
+ <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M98 85h20m-6-6 6 6-6 6"/><path d="M208 85h20m-6-6 6 6-6 6"/></g>
+</svg>
+        <div>
+          <h3>Sinal de ajuda com a mão</h3>
+          <p><b>1.</b> Mostre a mão aberta, com a palma para frente. <b>2.</b> Dobre o polegar para dentro da palma. <b>3.</b> Feche os outros dedos por cima do polegar.</p>
+          <p>Serve em <b>videochamadas</b> ou à distância, quando não dá para falar. Se alguém fizer esse sinal para você, procure saber se ela está segura e, em perigo imediato, chame a polícia pelo 190.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section id="rede" aria-labelledby="h-rede">
     <p class="eyebrow">Atendimento presencial</p>
     <h2 id="h-rede">Rede de apoio</h2>
@@ -245,6 +292,7 @@ body{overflow-wrap:anywhere}
       <li><strong>Ouça sem julgar.</strong> Evite perguntar "por que você não sai?". Diga que acredita nela e que a culpa não é dela.</li>
       <li><strong>Não confronte o agressor.</strong> Isso pode aumentar o risco para ela e para você.</li>
       <li><strong>Mostre os canais</strong> e ofereça o seu telefone para ela ligar em segurança.</li>
+      <li><strong>Conheça o sinal da mão.</strong> Um X vermelho na palma ou o gesto do polegar dobrado sob os dedos é um pedido de socorro. <a href="#sinal">Veja como é</a>.</li>
       <li><strong>Combine um sinal</strong> (uma palavra ou mensagem) que signifique "chame a polícia".</li>
       <li><strong>Viu ou ouviu agressão? Ligue 190.</strong> "Em briga de marido e mulher" se mete a colher, sim.</li>
       <li><strong>Respeite o tempo dela.</strong> Sair de uma relação violenta costuma levar várias tentativas. Continue por perto.</li>
@@ -321,7 +369,7 @@ body{overflow-wrap:anywhere}
 
 <footer class="gutter"><div class="in">
   <p>Este site não usa cookies, não tem formulários de contato e não registra visitas.</p>
-  <p>Fontes: Lei 11.340/2006 (Maria da Penha), Lei 14.994/2024, Lei 14.344/2022 (Henry Borel), Lei 12.845/2013, Lei 12.737/2012, Lei 8.069/1990 (ECA), Ministério das Mulheres, Prefeitura de São Paulo (SMADS e SMDHC), Polícia Civil de SP, TJSP.</p>
+  <p>Fontes: Lei 11.340/2006 (Maria da Penha), Lei 14.994/2024, Lei 14.344/2022 (Henry Borel), Lei 14.188/2021 (Sinal Vermelho), Lei 12.845/2013, Lei 12.737/2012, Lei 8.069/1990 (ECA), Ministério das Mulheres, Prefeitura de São Paulo (SMADS e SMDHC), Polícia Civil de SP, TJSP.</p>
 </div></footer>
 
 <button class="ask-btn" id="ask-open" type="button" aria-controls="ask" aria-expanded="false">Tire suas dúvidas</button>
@@ -469,6 +517,7 @@ const FAQ = [
  {q:"Quero ajudar uma amiga ou vizinha", k:"ajudar amiga vizinha vizinho irma mae colega conhecida alguem", a:'Ouça sem julgar, não confronte o agressor e ofereça ir junto com ela a um atendimento presencial. Viu ou ouviu agressão acontecendo? Chame a polícia pelo 190. <a href="#ajudar">Ver como ajudar</a>.'},
  {q:"Uma criança está sofrendo violência", k:"crianca adolescente menor filho filha apanha bate maltrata abuso infantil escola", a:'Procure o <b>Conselho Tutelar de Pedreira</b> (Rua Antônio Teixeira Pinto, 9, Balneário Mar Paulista). Em perigo imediato, chame a polícia pelo 190. <a href="#criancas">Ver sinais de alerta</a>.'},
  {q:"Sou criança ou adolescente e tenho medo", k:"sou crianca adolescente menina menino medo casa apanho pai mae padrasto madrasta escola professor contar", a:'A culpa <b>não é sua</b>. Conte para um adulto de confiança: professor, coordenação da escola, educador da AFAGO, avó, tia ou vizinha. Pode dizer: <i>“Preciso falar com você sobre uma coisa que está acontecendo em casa.”</i> Se a primeira pessoa não ajudar, conte para outra. <a href="#criancas">Saiba mais</a>.'},
+ {q:"Como pedir ajuda sem falar?", k:"sinal mao vermelho x palma sem falar gesto farmacia silencio escondido", a:'Use o <b>Sinal Vermelho</b>: desenhe um X vermelho na palma da mão e mostre ao atendente de uma farmácia, banco ou repartição que participe da campanha (Lei 14.188/2021). Em videochamada, faça o <b>sinal de ajuda</b>: palma aberta, polegar dobrado e dedos fechados por cima. <a href="#sinal">Ver o desenho</a>.'},
  {q:"Existe abrigo para mim?", k:"abrigo casa abrigo dormir onde ficar acolhimento fugir", a:'Sim. Há casas-abrigo sigilosas para mulheres em risco, com acesso por encaminhamento. Procure pessoalmente a Casa da Mulher Brasileira, o CREAS ou o CDCM, que fazem esse encaminhamento.'},
  {q:"Este site guarda meus dados?", k:"dados privacidade guarda salva rastro historico seguro", a:'Não. O site não usa cookies, não tem formulário e não registra visitas. Este assistente não entra em contato com ninguém: a conversa não é enviada nem salva e some ao fechar. Use o botão <b>Sair rápido</b> (ou Esc 2×) se precisar.'}
 ];

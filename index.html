@@ -48,8 +48,8 @@ a{color:var(--accent)}
 nav.menu{border-bottom:1px solid var(--line);background:var(--surface)}
 nav.menu ul{max-width:72rem;margin:0 auto;list-style:none;padding-block:10px;display:flex;gap:6px 18px;overflow-x:auto;padding-left:0;padding-right:0}
 nav.menu a{color:var(--ink);text-decoration:none;white-space:nowrap;font-size:.95rem}
-nav.menu ul{scrollbar-width:none} nav.menu ul::-webkit-scrollbar{display:none}
-@media (min-width:760px){nav.menu ul{flex-wrap:wrap;overflow-x:visible}}
+nav.menu ul{flex-wrap:wrap;overflow-x:visible}
+@media (max-width:759px){nav.menu ul{gap:8px 16px;padding-block:8px} nav.menu a{font-size:.88rem}}
 nav.menu a:hover{color:var(--accent)}
 
 main{max-width:68ch;margin:0 auto;padding-block:32px 64px;display:grid;gap:56px}

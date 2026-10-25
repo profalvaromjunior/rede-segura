@@ -12,6 +12,7 @@ Site informativo sobre violência doméstica, desenvolvido como projeto de exten
 - Medidas protetivas e penas atualizadas pela Lei 14.994/2024
 - Canais de denúncia e rede de apoio em São Paulo
 - Teste "Isso é violência?", mitos e verdades, como ajudar alguém
+- Assistente "Tire suas dúvidas": perguntas e respostas sem IA, que roda só no navegador, não faz contato com ninguém e indica os endereços para atendimento presencial (edite a lista `FAQ` no `index.html`)
 - Sem cookies, sem formulários, sem coleta de dados
 
 ## Tecnologia
